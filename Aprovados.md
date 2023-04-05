@@ -1,3 +1,3 @@
-TOMADA0
+TOMADA
 edu082021@outlook.com
-pandoraakio77@gmail.com
+pandoraakio7@gmail.com
