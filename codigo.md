@@ -1,5 +1,5 @@
 ### Eduardo
-Saldo: 50
+50
 
 ### João
 Saldo: 30
