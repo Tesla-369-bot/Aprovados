@@ -1,11 +1,8 @@
-import requests
+### Eduardo
+Saldo: 50
 
-# URL do arquivo no GitHub
-url = "https://raw.githubusercontent.com/Tesla-369-bot/Aprovados/main/codigo.md"
+### João
+Saldo: 30
 
-# Faz a requisição ao arquivo no GitHub
-response = requests.get(url)
-conteudo = response.text
-
-# Exibe todo o conteúdo
-print(conteudo)
+### Maria
+Saldo: 40
