@@ -1,1 +1,1 @@
-padoraakio77@gmail.co
+padoraakio77@gmail.com
