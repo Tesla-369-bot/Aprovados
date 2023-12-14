@@ -1,4 +1,6 @@
 ```python
+import requests
+import ast
 from iqoptionapi.stable_api import IQ_Option
 from datetime import datetime
 import time
@@ -7,6 +9,7 @@ import subprocess
 import pyttsx3
 from telegram import Bot
 import asyncio
+
 
 
 token = '6286275485:AAHaK-uRfNSr-hSCH0xEv3iu4tSyExa5vgI'
