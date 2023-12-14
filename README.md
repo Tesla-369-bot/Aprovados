@@ -94,7 +94,7 @@ stop_loss = float(input(' Indique o valor de Stop Loss: '))
 stop_gain = 0
 
 lucro = 0
-payout = Payout(par)
+payout = Payout()
 #messages = ('ANALISES INICIADA EM : '  + par + ' BORA FAZER GRANA!!!')
 #send_message_now(token, chat_id, messages)
 
