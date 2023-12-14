@@ -6,3 +6,4 @@
 - **Paridade para Operar:** EURUSD  # Substitua pelo par desejado
 - **Valor para Entrar:** 10.0  # Substitua pelo valor desejado
 - **Stop Loss:** 5.0  # Substitua pelo valor desejado
+
