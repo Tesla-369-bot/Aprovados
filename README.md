@@ -43,7 +43,7 @@ def Martingale(valor, payout):
             break
         valor += 0.01
 
-def Payout(par):
+def Payout(API, par):
     API.subscribe_strike_list(par, 1)
     while True:
         d = API.get_digital_current_profit(par, 1)
