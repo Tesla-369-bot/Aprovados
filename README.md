@@ -10,6 +10,7 @@ import pyttsx3
 from telegram import Bot
 import asyncio
 
+
 token = '6286275485:AAHaK-uRfNSr-hSCH0xEv3iu4tSyExa5vgI'
 chat_id = '-1001555213923'
 
@@ -51,7 +52,7 @@ def Martingale(valor, payout):
             break
         valor += 0.01
 
-def Payout(API, par):
+def Payout(par):
     API.subscribe_strike_list(par, 1)
     while True:
         d = API.get_digital_current_profit(par, 1)
@@ -94,7 +95,7 @@ stop_loss = float(input(' Indique o valor de Stop Loss: '))
 stop_gain = 0
 
 lucro = 0
-payout = Payout()
+payout = Payout(par)
 #messages = ('ANALISES INICIADA EM : '  + par + ' BORA FAZER GRANA!!!')
 #send_message_now(token, chat_id, messages)
 
