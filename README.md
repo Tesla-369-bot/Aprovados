@@ -1,5 +1,4 @@
 ```python
-import requests
 import ast
 from iqoptionapi.stable_api import IQ_Option
 from datetime import datetime
@@ -10,10 +9,10 @@ import pyttsx3
 from telegram import Bot
 import asyncio
 
-
-
+# Variáveis globais
 token = '6286275485:AAHaK-uRfNSr-hSCH0xEv3iu4tSyExa5vgI'
 chat_id = '-1001555213923'
+API = None  # Inicializamos API como None e definiremos mais tarde
 
 async def send_message(token: str, chat_id: str, text: str):
     bot = Bot(token=token)
@@ -38,7 +37,7 @@ def stop(lucro, gain, loss):
         
     if lucro >= float(abs(gain)):
         speak_text("Stop gain batido. Seu lucro foi de " + lucro_str + ". Parabéns. Volte apenas amanhã!")
-        
+
 def Martingale(valor, payout):
     lucro_esperado = valor * payout
     perca = float(valor)    
@@ -53,7 +52,7 @@ def Payout(par):
     API.subscribe_strike_list(par, 1)
     while True:
         d = API.get_digital_current_profit(par, 1)
-        if d != False:
+        if d is not False:
             d = round(int(d) / 100, 2)
             break
         time.sleep(1)
@@ -62,17 +61,18 @@ def Payout(par):
     return d
 
 print('''
-        
  ------------------------------------
 ''')
 
-email = 'pandoraakio77@gmail.com'#input(' Coloque seu email: ')
-senha = '977404akio' #input(' Coloque sua senha: ')
-conta = 'PRACTICE' #input(' Conta PRACTICE ou REAL: ')
+email = 'pandoraakio77@gmail.com'
+senha = '977404akio'
+conta = 'PRACTICE'  # Pode ser 'PRACTICE' ou 'REAL'
+
+# Conecta à API
 API = IQ_Option(email, senha)
 API.connect()
 
-API.change_balance(conta) # PRACTICE / REAL
+API.change_balance(conta)  # PRACTICE / REAL
 
 if API.check_connect():
     print(' Conectado com sucesso!')
@@ -81,7 +81,7 @@ else:
     input('\n\n Aperte enter para sair')
     sys.exit()
 
-par = 'EURUSD' #input(' Indique uma paridade para operar: ').upper()
+par = 'EURUSD'  # Paridade para operar
 valor_entrada = float(input(' Indique um valor para entrar: '))
 valor_entrada_b = float(valor_entrada)
 
@@ -93,11 +93,8 @@ stop_gain = 0
 
 lucro = 0
 payout = Payout(par)
-#messages = ('ANALISES INICIADA EM : '  + par + ' BORA FAZER GRANA!!!')
-#send_message_now(token, chat_id, messages)
 
 while True:
-    
     agora = datetime.now()
     minutos = agora.second
     entrar = True if minutos % 55 == 0 else False
@@ -140,7 +137,8 @@ while True:
                             lucro += round(valor, 2)
 
                             print('Resultado operação: ', end='')
-                            print('WIN /' if valor > 0 else 'LOSS /' , round(valor, 2), '/', round(lucro, 2),('/ '+str(i)+ ' GALE' if i > 0 else '' ))
+                            print('WIN /' if valor > 0 else 'LOSS /', round(valor, 2), '/', round(lucro, 2),
+                                  ('/ ' + str(i) + ' GALE' if i > 0 else ''))
 
                             valor_entrada = Martingale(valor_entrada, payout)
 
@@ -148,9 +146,12 @@ while True:
 
                             break
 
-```                    if valor > 0 : break
-
+                    if valor > 0:
+                        break
                 else:
                     print('\nERRO AO REALIZAR OPERAÇÃO\n\n')
 
     time.sleep(0.5)
+
+
+```
